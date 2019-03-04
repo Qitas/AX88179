@@ -8,7 +8,7 @@
 
 ## [平台&资源](qitas/)
 
-### [台湾亚信](AX88179/)
+### [台湾亚信](asix/)
 
 #### [AX88179方案](https://www.asix.com.tw/products.php?op=pItemdetail&PItemID=131;71;112) 
 
