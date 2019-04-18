@@ -1,22 +1,17 @@
-# [Ethernet<->USB](https://github.com/qitas/Ethernet-USB) 
-
+# [Ethernet](https://github.com/qitas/ethernet) 
 #### qitas@qitas.cn
-
+#### 关联：[Protocol通信协议](https://github.com/Qitas/protocol) 
 ## [描述](https://github.com/qitas/Ethernet-USB/wiki) 
 
-通过转换芯片和相应平台驱动实现USB和以太网间的转换
+IEEE组织的IEEE802.3标准制定了以太网的技术标准，规定了包括物理层的连线、电子信号和介质访问层协议的内容。
 
-## [平台&资源](qitas/)
+以太网的帧格式与 IP 是一致的，特别适合于传输 IP 数据。以太网由于具有简单方便、价格低、速度高等。
 
-### [台湾亚信](asix/)
+### [USB转Ethernet](USB/)
 
-#### [AX88179方案](https://www.asix.com.tw/products.php?op=pItemdetail&PItemID=131;71;112) 
+由于以太网的诸多限制，现在很多嵌入式设备都不再提供相应的物理接口，需要通过相应的转换接口实现连接，最常用的就是USB转换
 
-USB 3.0 to Gigabit Ethernet controller which integrates USB 3.0 PHY and 10/100/1000Mbps Gigabit Ethernet MAC/PHY in a single chip。
-
-
----
-
-### 锻造最美之器
+- [AX88179方案](https://www.asix.com.tw/products.php?op=pItemdetail&PItemID=131;71;112) 
 
 [![sites](qitas/qitas.png)](http://www.qitas.cn)
+## 锻造最美之器
