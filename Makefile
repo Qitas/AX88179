@@ -1,7 +1,7 @@
 .PHONY: vendor
 
 JOBS = 4
-MAKE = make -j $(JOBS)
+
 SCONS = scons -Q -j $(JOBS)
 
 BUILD_DIR             = build
@@ -11,11 +11,6 @@ UNAME_S := $(shell uname -s)
 UNIX_PORT_OPTS ?=
 CROSS_PORT_OPTS ?=
 
-BOARDLOADER_MAXSIZE = 49152
-BOOTLOADER_MAXSIZE  = 131072
-FIRMWARE_P1_MAXSIZE = 786432
-FIRMWARE_P2_MAXSIZE = 917504
-FIRMWARE_MAXSIZE    = 1703936
 
 GITREV=$(shell git describe --always --dirty | tr '-' '_')
 CFLAGS += -DGITREV=$(GITREV)
@@ -27,6 +22,10 @@ help: ## show this help
 
 run: ## run unix port
 	cd src ; ../$(UNIX_BUILD_DIR)/micropython
+
+ret: ## return flash file
+	cp /var/tmp/trezor.flash ./emu.user.bak
+	cp emu.user /var/tmp/trezor.flash
 
 emu: ## run emulator
 	./emu.sh
