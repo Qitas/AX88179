@@ -48,4 +48,5 @@ build_raspi: res ## build unix port for Raspberry Pi
 
 clean: 
 	rm -rf $(UNIX_BUILD_DIR)
+	rm /var/tmp/trezor.flash
 
