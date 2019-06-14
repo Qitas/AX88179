@@ -31,7 +31,7 @@ emu: ## run emulator
 	./emu.sh
 
 res: ## update resources
-	./vendor/res_collect
+	./tools/res_collect
 
 
 ## build commands:
