@@ -1,5 +1,65 @@
 #!/bin/bash
 WorkPath=`pwd`
 
-sudo apt-get install -y libsdl2-dev
+## Root Password
+for ((i = 0; i < 5; i++)); do
+	PASSWD=$(whiptail --title "Emu Config System" \
+		--passwordbox "Enter root password. Don't use root or sudo run it" \
+		10 60 3>&1 1>&2 2>&3)
+	if [ $i = "4" ]; then
+		whiptail --title "Note Qitas" --msgbox "Invalid password" 10 40 0	
+		exit 0
+	fi
 
+	sudo -k
+	if sudo -lS &> /dev/null << EOF
+$PASSWD
+EOF
+	then
+		i=10
+	else
+		whiptail --title "Emu Config System" --msgbox "Invalid password, Pls input corrent password" \
+		10 40 0	--cancel-button Exit --ok-button Retry
+	fi
+done
+
+echo $PASSWD | sudo ls &> /dev/null 2>&1
+
+function apt_install()
+{
+	sudo apt install -y libsdl2-dev libsdl2-image-dev libsdl2-2.0 libmirclient-dev libxkbcommon-dev
+}
+
+
+OPTION=$(whiptail --title "Emu Config System" \
+	--menu "$MENUSTR" 20 60 12 --cancel-button Finish --ok-button Select \
+	"0"   "AUTO" \
+	"1"   "MAKE" \
+	"2"   "RUN" \
+	3>&1 1>&2 2>&3)
+	
+
+if [ $OPTION = '0' ]; then
+	clear
+	echo -e "AUTO all\n${Line}"
+	apt_install
+	exit 0
+elif [ $OPTION = '1' ]; then
+	clear
+	echo -e "MAKE\n${Line}"
+	make build
+	exit 0
+elif [ $OPTION = '2' ]; then
+	clear
+	echo -e "RUN\n${Line}"
+	./emu.sh
+	exit 0
+else
+	whiptail --title "Emu Config System" \
+		--msgbox "Please select correct option" 10 50 0
+	exit 0
+fi
+
+
+
+exit 0
