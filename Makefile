@@ -15,10 +15,10 @@ CROSS_PORT_OPTS ?=
 GITREV=$(shell git describe --always --dirty | tr '-' '_')
 CFLAGS += -DGITREV=$(GITREV)
 
-## help commands:
+## execute commands:
 
-help: ## show this help
-	@awk -f ./emu.awk $(MAKEFILE_LIST)
+emu: ## run emulator
+	./emu.sh
 
 run: ## run unix port
 	cd src ; ../$(UNIX_BUILD_DIR)/micropython
@@ -27,12 +27,8 @@ ret: ## return flash file
 	cp /var/tmp/trezor.flash ./emu.user.bak
 	cp emu.user /var/tmp/trezor.flash
 
-emu: ## run emulator
-	./emu.sh
-
 res: ## update resources
 	./tools/res_collect
-
 
 ## build commands:
 

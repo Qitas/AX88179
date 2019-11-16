@@ -1,0 +1,6 @@
+ site_scons/site_tools/micropython/__init__.pyc
+__pycache__/
+.pio/
+.vscode/
+build/
+*.dblite
