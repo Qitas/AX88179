@@ -1,6 +1,6 @@
 .PHONY: vendor
-
-JOBS = 4
+# grep -c ^processor /proc/cpuinfo  
+JOBS = 12
 
 SCONS = scons -Q -j $(JOBS)
 
@@ -35,10 +35,10 @@ res: ## update resources
 build: res ## build unix port
 	$(SCONS) CFLAGS="$(CFLAGS)" $(UNIX_BUILD_DIR)/micropython $(UNIX_PORT_OPTS)
 
-build_noui: res ## build unix port without UI support
+build_for_unix: res ## build unix port without UI support
 	$(SCONS) CFLAGS="$(CFLAGS)" $(UNIX_BUILD_DIR)/micropython $(UNIX_PORT_OPTS) TREZOR_EMULATOR_NOUI=1
 
-build_raspi: res ## build unix port for Raspberry Pi
+build_for_raspi: res ## build unix port for Raspberry Pi
 	$(SCONS) CFLAGS="$(CFLAGS)" $(UNIX_BUILD_DIR)/micropython $(UNIX_PORT_OPTS) TREZOR_EMULATOR_RASPI=1
 
 
