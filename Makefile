@@ -29,9 +29,13 @@ emu: ## run emulator
 run: ## run unix port
 	cd src ; ../$(UNIX_BUILD_DIR)/micropython
 
-ret: ## return flash file
+set: ## return flash file
 	cp /var/tmp/emu.flash ./emu.user.bak
 	cp emu.user /var/tmp/emu.flash
+	
+reset: ## return flash file
+	# cp /var/tmp/emu.flash ./emu.user
+	cp emu.user.bak /var/tmp/emu.flash
 
 res: ## update resources
 	./tools/res_collect

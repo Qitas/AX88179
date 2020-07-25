@@ -117,12 +117,12 @@ const char *profile_sdcard_path(void) {
     return _sdcard_path;
   }
 
-  if (asprintf(&_sdcard_path, "%s/trezor.sdcard", profile_dir()) < 0) {
+  if (asprintf(&_sdcard_path, "%s/emu.sdcard", profile_dir()) < 0) {
     _sdcard_path = NULL;
   }
 
   if (!_sdcard_path) {  // last resort fallback
-    _sdcard_path = PROFILE_DEFAULT "/trezor.sdcard";
+    _sdcard_path = PROFILE_DEFAULT "/emu.sdcard";
   }
 
   return _sdcard_path;
