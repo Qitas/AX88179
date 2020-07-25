@@ -1,6 +1,12 @@
 .PHONY: vendor
 # grep -c ^processor /proc/cpuinfo  
-JOBS = 16
+# JOBS = 16
+ifeq ($(JOBS),)
+JOBS := $(shell grep -c ^processor /proc/cpuinfo 2>/dev/null)
+ifeq ($(JOBS),)
+JOBS := 4
+endif
+endif
 
 SCONS = scons -Q -j $(JOBS)
 
@@ -24,8 +30,8 @@ run: ## run unix port
 	cd src ; ../$(UNIX_BUILD_DIR)/micropython
 
 ret: ## return flash file
-	cp /var/tmp/trezor.flash ./emu.user.bak
-	cp emu.user /var/tmp/trezor.flash
+	cp /var/tmp/emu.flash ./emu.user.bak
+	cp emu.user /var/tmp/emu.flash
 
 res: ## update resources
 	./tools/res_collect
@@ -44,5 +50,5 @@ build_for_raspi: res ## build unix port for Raspberry Pi
 
 clean: 
 	rm -rf $(UNIX_BUILD_DIR)
-	rm /var/tmp/trezor.flash
+	rm /var/tmp/emu.flash
 

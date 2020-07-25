@@ -100,12 +100,12 @@ const char *profile_flash_path(void) {
     return _flash_path;
   }
 
-  if (asprintf(&_flash_path, "%s/trezor.flash", profile_dir()) < 0) {
+  if (asprintf(&_flash_path, "%s/emu.flash", profile_dir()) < 0) {
     _flash_path = NULL;
   }
 
   if (!_flash_path) {  // last resort fallback
-    _flash_path = PROFILE_DEFAULT "/trezor.flash";
+    _flash_path = PROFILE_DEFAULT "/emu.flash";
   }
 
   return _flash_path;

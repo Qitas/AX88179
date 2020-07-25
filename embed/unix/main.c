@@ -415,7 +415,7 @@ STATIC void set_sys_argv(char *argv[], int argc, int start_arg) {
 MP_NOINLINE int main_(int argc, char **argv);
 
 int main(int argc, char **argv) {
-  // Through TREZOR_PROFILE you can set the directory for trezor.flash file.
+  // Through TREZOR_PROFILE you can set the directory for emu.flash file.
   profile_init();
 
   collect_hw_entropy();
