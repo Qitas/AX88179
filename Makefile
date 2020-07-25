@@ -1,6 +1,6 @@
 .PHONY: vendor
 # grep -c ^processor /proc/cpuinfo  
-JOBS = 12
+JOBS = 16
 
 SCONS = scons -Q -j $(JOBS)
 
