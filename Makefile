@@ -4,7 +4,7 @@
 ifeq ($(JOBS),)
 JOBS := $(shell grep -c ^processor /proc/cpuinfo 2>/dev/null)
 ifeq ($(JOBS),)
-JOBS := 4
+JOBS := 8
 endif
 endif
 

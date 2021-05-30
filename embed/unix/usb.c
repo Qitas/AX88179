@@ -36,15 +36,15 @@ __fatal_error(const char *expr, const char *msg, const char *file, int line,
 
 #define ensure(expr, msg) \
   (((expr) == sectrue)    \
-       ? (void)0          \
-       : __fatal_error(#expr, msg, __FILE__, __LINE__, __func__))
+      ? (void)0          \
+      : __fatal_error(#expr, msg, __FILE__, __LINE__, __func__))
 
 // emulator opens UDP server on TREZOR_UDP_PORT port
 // and emulates HID/WebUSB interface TREZOR_UDP_IFACE
 // gracefully ignores all other USB interfaces
 
 #define USBD_MAX_NUM_INTERFACES 8
-#define TREZOR_UDP_PORT 21324
+#define TREZOR_UDP_PORT 21326
 
 static struct {
   usb_iface_type_t type;
